@@ -190,8 +190,28 @@ body {
     outline: none;
 }
 
-.questions .answer:focus{
-    background: none;
+* {
+    user-select: none;
+}
+
+/* Rasmlarni ko'chirib bo'lmasligi */
+img {
+    pointer-events: none;
+}
+
+
+
+/* Fokuslanganida fon o'zgarishini o'chirish */
+button:focus, a:focus, div:focus, img:focus, *:focus {
     outline: none;
-    border: none;
+}
+
+/* Disable tap highlight on mobile */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+/* Disable any active/focused styling */
+*:active, *:focus {
+    outline: none;
+    /*background-color: transparent; !* Ensures no background color change *!*/
 }
