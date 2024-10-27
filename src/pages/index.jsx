@@ -35,7 +35,7 @@ const Index = () => {
                     >
                         {mebelData.map((item, index) => (
                             <SwiperSlide key={index} >
-                                <img src={item.url} alt={item.alt}/>
+                                <img src={item.url} alt={item.alt} loading={"lazy"}/>
                             </SwiperSlide>
                         ))}
                     </Swiper>

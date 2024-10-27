@@ -60,7 +60,7 @@ const Questions = () => {
                         className={"answer"}
                     >
                         <img src={option.img} alt={option.label}
-                             style={{width: '150px', height: '100px', marginBottom: '10px'}}/>
+                             style={{width: '150px', height: '100px', marginBottom: '10px'}} loading={"lazy"}/>
                         <span>{option.label}</span>
                     </div>
                 ))}
