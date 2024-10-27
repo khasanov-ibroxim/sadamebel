@@ -160,7 +160,7 @@ const Questions = () => {
             return;
         }
 
-        if (!formData.phone || formData.phone.trim().length < 11) {
+        if (!formData.phone || formData.phone.trim().length < 17) {
             messageApi.open({
                 type: 'error',
                 content: "Введите ваш номер телефона правильно",
@@ -317,7 +317,25 @@ const Questions = () => {
                         </label>
                         <label>
                             <span>Телефон:</span>
-                            <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required />
+                            <input type="tel" placeholder={"+998"} name="phone" value={formData.phone}
+                                   onChange={e => {
+                                       const formattedValue = e.target.value.replace(/\D/g, '');
+                                       let formattedNumber = '+998';
+                                       if (formattedValue.length > 3) {
+                                           formattedNumber += ' ' + formattedValue.substring(3, 5);
+                                       }
+                                       if (formattedValue.length > 5) {
+                                           formattedNumber += ' ' + formattedValue.substring(5, 8);
+                                       }
+                                       if (formattedValue.length > 8) {
+                                           formattedNumber += ' ' + formattedValue.substring(8, 10);
+                                       }
+                                       if (formattedValue.length > 10) {
+                                           formattedNumber += ' ' + formattedValue.substring(10, 12);
+                                       }
+                                       setFormData({...formData , phone:formattedNumber});
+                                   }}
+                                   required />
                         </label>
 
                         <button type="submit">Отправить</button>
