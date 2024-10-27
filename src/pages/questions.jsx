@@ -6,6 +6,8 @@ import modern3 from "../assets/mebel/m4.jpg";
 import modern4 from "../assets/mebel/m5.jpg";
 import modern5 from "../assets/mebel/m6.jpg";
 import quest from "../assets/question.png";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const Questions = () => {
     const questions = [
@@ -83,6 +85,9 @@ const Questions = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [isQuizCompleted, setIsQuizCompleted] = useState(false);
     const [formData, setFormData] = useState({ name: '', phone: '', email: '' });
+    const [disabled, setDisabled] = useState(false);
+    const navigate = useNavigate();
+
 
     const handleOptionSelect = (optionLabel) => {
         setAnswers((prevAnswers) => ({
@@ -133,14 +138,76 @@ const Questions = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setDisabled(true);
 
-        if (!formData.name || !formData.phone) {
-            messageApi.error('Пожалуйста, заполните все поля.');
+        const hasNumber = /\d/;
+
+        if (!formData.name || formData.name.trim().length === 0) {
+            messageApi.open({
+                type: 'error',
+                content: 'Введите ваше имя',
+            });
+            setDisabled(false);
             return;
         }
 
-        console.log('Form submitted:', formData);
-        console.log('answer:', answers);
+        if (formData.name.trim().length <= 3 || hasNumber.test(formData.name)) {
+            messageApi.open({
+                type: 'error',
+                content: "Введите ваше имя правильно",
+            });
+            setDisabled(false);
+            return;
+        }
+
+        if (!formData.phone || formData.phone.trim().length < 11) {
+            messageApi.open({
+                type: 'error',
+                content: "Введите ваш номер телефона правильно",
+            });
+            setDisabled(false);
+            return;
+        }
+
+        // Savollar va javoblarni tayyorlash
+        const responses = questions.map((question) => {
+            return {
+                question: question.text,
+                answer: answers[question.id] || 'Javob berilmadi',
+            };
+        });
+
+        let msg = `<b>Yangi xabar </b>\n`;
+        msg += `\nIsmi: ${formData.name}\n`;
+        msg += `\nTel: ${formData.phone}\n`;
+        responses.forEach((resp) => {
+            msg += `\nSavol: ${resp.question}\n`;
+            msg += `Javob: ${resp.answer}\n`;
+        });
+
+        const TOKEN = "8162887690:AAG-rSREL66depoFw08bxBByoxMxKrTcKu8";
+        const CHAT_ID = "-1002485742935";
+
+        axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+            chat_id: CHAT_ID,
+            parse_mode: 'html',
+            text: msg
+        }).then((res) => {
+            if (res?.status === 200) {
+                messageApi.open({
+                    type: 'success',
+                    content: 'Сообщение успешно отправлено',
+                });
+                // Formni tozalash
+                setTimeout(() => navigate("/"), 3000);
+            }
+        }).catch((e) => {
+            messageApi.open({
+                type: 'error',
+                content: 'Произошла ошибка на сервере',
+            });
+            setDisabled(false);
+        });
     };
 
     return (
