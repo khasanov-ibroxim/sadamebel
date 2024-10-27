@@ -59,6 +59,7 @@ const Questions = () => {
                             padding: '10px',
                             borderRadius: '8px',
                             cursor: 'pointer',
+                            outline: 'none',
                             border: answers[questions[currentQuestionIndex].id] === option.label ? '2px solid #FFD700' : '2px solid transparent',
                             backgroundColor: answers[questions[currentQuestionIndex].id] === option.label ? '#FFF9C4' : '#FFF',
                         }}
