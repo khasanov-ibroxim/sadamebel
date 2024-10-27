@@ -100,7 +100,7 @@ body {
     font-weight: 600;
     color: black;
 }
-
+.questions h2{text-align: center}
 @media screen and (max-width: 900px){
     .app_content_box_text{color: white ; width: 100%;}
     .swiper-slide img{
@@ -134,6 +134,11 @@ body {
     }
 }
 
+@media screen and (max-width: 360px){
+    .answer{
+        padding: 2px !important;
+    }
+}
 
 .questions{
     position: relative;
@@ -169,7 +174,7 @@ body {
 
 .questions_btn{
     cursor: pointer;
-    width: 200px;
+    width: 150px;
     padding: 15px;
     border-radius: 15px;
     border: none;
@@ -179,7 +184,15 @@ body {
     font-weight: 600;
     color: black;
 }
-
+.questions_btn:nth-child(2){
+    margin-left: 15px;
+}
+.questions_btn_box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .questions .answer {
     display: flex;
     flex-direction: column;
@@ -214,4 +227,129 @@ button:focus, a:focus, div:focus, img:focus, *:focus {
 *:active, *:focus {
     outline: none;
     /*background-color: transparent; !* Ensures no background color change *!*/
+}
+.questions_subtext{
+    margin-top: 0;
+}
+.questions_select{
+    padding: 10px;
+    border: #F1EB62 solid 2px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.questions_check {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.questions_check label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    height: 30px;
+    font-size: 18px;
+    color: #333; /* Light gray for label text */
+}
+
+.questions_check input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    appearance: none;
+    background-color: #ffffff; /* White background */
+    border: 2px solid #ccc; /* Border for unchecked state */
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.questions_check input[type="checkbox"]:checked {
+    background-color: #FFD700; /* Yellow background for checked state */
+    border-color: #FFD700;
+}
+
+.questions_check input[type="checkbox"]::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    transition: transform 0.2s ease-in-out;
+    transform: scale(0); /* Hidden initially */
+}
+
+.questions_check input[type="checkbox"]:checked::before {
+    transform: scale(1); /* Visible when checked */
+}
+
+
+.form-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-container h2 ,.form-container p{
+    text-align: center;
+}
+.form-container p{
+    margin-top: 0;
+    font-size: 18px;
+}
+.form-container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+.form-container form label{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    text-align: left;
+
+}
+.form-container form label span{
+    font-size: 19px;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+.form-container form label:nth-child(2){
+    margin-top: 30px;
+}
+.form-container form input{
+    width: 90%;
+    height: 40px;
+    border-radius: 15px;
+    outline: none;
+    background: white;
+    border: #FFD700 solid 2px;
+    padding: 4px 10px;
+}
+.form-container form button{
+    cursor: pointer;
+    width: 150px;
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background: #F1EB62;
+    font-weight: 600;
+    color: black;
+}
+@media screen and (max-width: 900px){
+    .form-container form{
+        width: 100%;
+    }
 }
