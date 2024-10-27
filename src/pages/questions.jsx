@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { message } from 'antd';
-import modern1 from "../assets/mebel/m2.jpg";
-import modern2 from "../assets/mebel/m3.jpg";
-import modern3 from "../assets/mebel/m4.jpg";
-import modern4 from "../assets/mebel/m5.jpg";
-import modern5 from "../assets/mebel/m6.jpg";
+import modern1 from "../assets/mebel/m2.webp";
+import modern2 from "../assets/mebel/m3.webp";
+import modern3 from "../assets/mebel/m5.webp";
+import modern4 from "../assets/mebel/m6.webp";
+import modern5 from "../assets/mebel/m8.webp";
 import quest from "../assets/question.png";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
