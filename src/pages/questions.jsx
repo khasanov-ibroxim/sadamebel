@@ -134,12 +134,13 @@ const Questions = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!formData.name || !formData.phone || !formData.email) {
+        if (!formData.name || !formData.phone) {
             messageApi.error('Пожалуйста, заполните все поля.');
             return;
         }
 
         console.log('Form submitted:', formData);
+        console.log('answer:', answers);
     };
 
     return (
