@@ -100,21 +100,38 @@ body {
     font-weight: 600;
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 900px){
+    .app_content_box_text{color: white ; width: 100%;}
     .swiper-slide img{
         object-fit: cover;
+        border-radius: 0;
+    }
+    .app_box_images{
+        width: 100%;
+        position: absolute;
+        z-index: -2;
+    }
+    .app-opacity{
+        background: rgba(0,0,0,0.4);
+        --gap: 5em;
+        --line: 1px;
+        --color: rgba(241, 235, 98, 0.3);
+
+        background-image: linear-gradient(
+                -90deg,
+                transparent calc(var(--gap) - var(--line)),
+                var(--color) calc(var(--gap) - var(--line) + 1px),
+                var(--color) var(--gap)
+        ),
+        linear-gradient(
+                0deg,
+                transparent calc(var(--gap) - var(--line)),
+                var(--color) calc(var(--gap) - var(--line) + 1px),
+                var(--color) var(--gap)
+        );
+        background-size: var(--gap) var(--gap);
     }
 }
 
-@media screen and (max-width: 700px){
-    .swiper-slide img{
-        object-fit: cover;
-    }
-    .app_box_images{
-        display: none;
-    }
-    .app_content_box_text{
-        width: 100%;
-    }
-}
+
 
