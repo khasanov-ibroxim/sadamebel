@@ -53,16 +53,11 @@ const Questions = () => {
                         key={option.label}
                         onClick={() => handleOptionSelect(option)}
                         style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            padding: '10px',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                            outline: 'none',
+
                             border: answers[questions[currentQuestionIndex].id] === option.label ? '2px solid #FFD700' : '2px solid transparent',
                             backgroundColor: answers[questions[currentQuestionIndex].id] === option.label ? '#FFF9C4' : '#FFF',
                         }}
+                        className={"answer"}
                     >
                         <img src={option.img} alt={option.label}
                              style={{width: '150px', height: '100px', marginBottom: '10px'}}/>

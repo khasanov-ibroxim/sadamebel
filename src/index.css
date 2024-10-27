@@ -145,6 +145,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .questions .app-opacity{
     background: transparent;
     --gap: 5em;
@@ -165,6 +166,7 @@ body {
     );
     background-size: var(--gap) var(--gap);
 }
+
 .questions_btn{
     cursor: pointer;
     width: 200px;
@@ -176,5 +178,14 @@ body {
     background: #F1EB62;
     font-weight: 600;
     color: black;
+}
 
+.questions .answer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px ;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
 }
