@@ -135,4 +135,46 @@ body {
 }
 
 
+.questions{
+    position: relative;
+    width: 100%;
+    height: 100vh;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.questions .app-opacity{
+    background: transparent;
+    --gap: 5em;
+    --line: 1px;
+    --color: rgba(241, 235, 98, 0.9);
+
+    background-image: linear-gradient(
+            -90deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap)
+    ),
+    linear-gradient(
+            0deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap)
+    );
+    background-size: var(--gap) var(--gap);
+}
+.questions_btn{
+    cursor: pointer;
+    width: 200px;
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background: #F1EB62;
+    font-weight: 600;
+    color: black;
+
+}
