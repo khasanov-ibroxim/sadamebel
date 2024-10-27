@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #fff;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.App {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.app-opacity {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    background: #fff;
+    --gap: 5em;
+    --line: 1px;
+    --color: rgba(241, 235, 98, 0.7);
+
+    background-image: linear-gradient(
+            -90deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap)
+    ),
+    linear-gradient(
+            0deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap)
+    );
+    background-size: var(--gap) var(--gap);
+}
+.app_content_box{
+    display: flex;
+    width: 100%;
+    color: black;
+    justify-content: space-between;
+}
+.app_box_images{
+    width: 50%;
+    height: 100%;
+}
+.swiper {
+    width: 100%;
+    height: 100vh;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+
+.app_content_box_text{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+    text-align: center;
+}
+.app_content_box_text img{
+    width: 300px;
+    height: 190px;
+    object-fit: cover;
+}
+.app_content_box_text h1{
+    margin: 0;
+}
+.app_content_box_text button{
+    cursor: pointer;
+    width: 200px;
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background: #F1EB62;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 1200px){
+    .swiper-slide img{
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .swiper-slide img{
+        object-fit: cover;
+    }
+    .app_box_images{
+        display: none;
+    }
+    .app_content_box_text{
+        width: 100%;
+    }
+}
+
