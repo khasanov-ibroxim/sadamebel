@@ -9,16 +9,32 @@ import quest from "../assets/question.png";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
+import quiz1_item1 from "../assets/quiz/quiz1_xaytek.webp"
+import quiz1_item2 from "../assets/quiz/quiz1_modern.webp"
+import quiz1_item3 from "../assets/quiz/quiz1_klassika.webp"
+import quiz1_item4 from "../assets/quiz/quiz1_minimalizm.webp"
+
+import quiz2_item1 from "../assets/quiz/quiz2_primoy.webp"
+import quiz2_item2 from "../assets/quiz/quiz2_ostrov.webp"
+import quiz2_item3 from "../assets/quiz/quiz2_uglavoy.webp"
+import quiz2_item4 from "../assets/quiz/quiz2_p.webp"
+import quiz2_item5 from "../assets/quiz/quiz2_poluostrov.webp"
+
+import quiz3_item1 from "../assets/quiz/quiz3_otkritya.webp"
+import quiz3_item2 from "../assets/quiz/quiz3_podsvetka.webp"
+import quiz3_item3 from "../assets/quiz/quiz3_sushilka.webp"
+import quiz3_item4 from "../assets/quiz/quiz3_kargo.webp"
+
 const Questions = () => {
     const questions = [
         {
             id: 1,
             text: 'В каком стиле вы хотите кухню?',
             options: [
-                { label: 'Хай Тек‍', img: modern1 },
-                { label: 'Модерн‍', img: modern2 },
-                { label: 'Классика‍', img: modern3 },
-                { label: 'Минимализм‍', img: modern4 },
+                { label: 'Хай Тек‍', img: quiz1_item1 },
+                { label: 'Модерн‍', img: quiz1_item2 },
+                { label: 'Классика‍', img: quiz1_item3 },
+                { label: 'Минимализм‍', img: quiz1_item4 },
                 { label: 'Не могу выбрать‍', img: quest },
             ],
         },
@@ -26,11 +42,11 @@ const Questions = () => {
             id: 2,
             text: 'Выберите форму кухни',
             options: [
-                { label: 'Прямая‍', img: modern1 },
-                { label: 'С островом', img: modern2 },
-                { label: 'Угловая', img: modern3 },
-                { label: 'П-образная', img: modern4 },
-                { label: 'Полуостровная', img: modern5 },
+                { label: 'Прямая‍', img: quiz2_item1 },
+                { label: 'С островом', img: quiz2_item2 },
+                { label: 'Угловая', img: quiz2_item3 },
+                { label: 'П-образная', img: quiz2_item4 },
+                { label: 'Полуостровная', img: quiz2_item5 },
             ],
         },
         {
@@ -62,10 +78,10 @@ const Questions = () => {
             id: 5,
             text: 'Какие элементы кухни вы предпочитаете? (можно выбрать несколько)',
             options: [
-                { label: 'Плавное открытие фасадов‍', img: modern1 },
-                { label: 'Подсветка‍', img: modern2 },
-                { label: 'Сушилка‍', img: modern3 },
-                { label: 'Карго‍', img: modern4 },
+                { label: 'Плавное открытие фасадов‍', img: quiz3_item1 },
+                { label: 'Подсветка‍', img: quiz3_item2 },
+                { label: 'Сушилка‍', img: quiz3_item3 },
+                { label: 'Карго‍', img: quiz3_item4 },
             ],
         },
         {
@@ -217,11 +233,19 @@ const Questions = () => {
             {!isQuizCompleted ? (
                 <>
                     <h2>{questions[currentQuestionIndex].text}</h2>
-                    {questions[currentQuestionIndex].subText && <p className={"questions_subtext"}>{questions[currentQuestionIndex].subText}</p>}
+                    {questions[currentQuestionIndex].subText &&
+                        <p className={"questions_subtext"}>{questions[currentQuestionIndex].subText}</p>}
 
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '0px', flexWrap: 'wrap', textAlign: "center" }}>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: '0px',
+                        flexWrap: 'wrap',
+                        textAlign: "center"
+                    }}>
                         {questions[currentQuestionIndex].id === 3 ? (
-                            <select className={"questions_select"} onChange={(e) => handleOptionSelect(e.target.value)} value={answers[3] || ''}>
+                            <select className={"questions_select"} onChange={(e) => handleOptionSelect(e.target.value)}
+                                    value={answers[3] || ''}>
                                 <option value="">Выберите длину</option>
                                 {questions[currentQuestionIndex].options.map((option) => (
                                     <option key={option.label} value={option.label}>
@@ -229,7 +253,7 @@ const Questions = () => {
                                     </option>
                                 ))}
                             </select>
-                        ) : questions[currentQuestionIndex].id === 4  || questions[currentQuestionIndex].id === 6 ? (
+                        ) : questions[currentQuestionIndex].id === 4 || questions[currentQuestionIndex].id === 6 ? (
                             <div className="questions_check">
                                 {questions[currentQuestionIndex].options.map((option) => (
                                     <label key={option.label}>
@@ -243,7 +267,7 @@ const Questions = () => {
                                     </label>
                                 ))}
                             </div>
-                        ) :  questions[currentQuestionIndex].id === 5 ? (
+                        ) : questions[currentQuestionIndex].id === 5 ? (
                                 questions[currentQuestionIndex].options.map((option) => {
                                     const isSelected = (answers[questions[currentQuestionIndex].id] || []).includes(option.label);
                                     return (
@@ -259,14 +283,14 @@ const Questions = () => {
                                             <img
                                                 src={option.img}
                                                 alt={option.label}
-                                                style={{ width: '150px', height: '100px', marginBottom: '10px' }}
+                                                style={{width: '150px', height: '100px', marginBottom: '10px'}}
                                                 loading="lazy"
                                             />
                                             <span>{option.label}</span>
                                         </div>
                                     );
                                 })
-                        ) :
+                            ) :
                             (
                                 questions[currentQuestionIndex].options.map((option) => (
                                     <div
@@ -285,7 +309,7 @@ const Questions = () => {
                                         <img
                                             src={option.img}
                                             alt={option.label}
-                                            style={{ width: '150px', height: '100px', marginBottom: '10px' }}
+                                            style={{width: '150px', height: '100px', marginBottom: '10px'}}
                                             loading="lazy"
                                         />
                                         <span>{option.label}</span>
@@ -313,7 +337,7 @@ const Questions = () => {
                     <form onSubmit={handleSubmit}>
                         <label>
                             <span>Имя:</span>
-                            <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
+                            <input type="text" name="name" value={formData.name} onChange={handleInputChange} required/>
                         </label>
                         <label>
                             <span>Телефон:</span>
@@ -333,9 +357,9 @@ const Questions = () => {
                                        if (formattedValue.length > 10) {
                                            formattedNumber += ' ' + formattedValue.substring(10, 12);
                                        }
-                                       setFormData({...formData , phone:formattedNumber});
+                                       setFormData({...formData, phone: formattedNumber});
                                    }}
-                                   required />
+                                   required/>
                         </label>
 
                         <button type="submit">Отправить</button>
