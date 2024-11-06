@@ -351,6 +351,13 @@ button:focus, a:focus, div:focus, img:focus, *:focus {
     font-weight: 600;
     color: black;
 }
+.questions_input{
+    width: 250px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 15px;
+    border: 2px #F1EB62 solid;
+}
 @media screen and (max-width: 900px){
     .form-container form{
         width: 100%;

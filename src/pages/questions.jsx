@@ -29,8 +29,8 @@ const Questions = () => {
             options: [
                 { label: 'Хай Тек‍', img: quiz1_item1 },
                 { label: 'Модерн‍', img: quiz1_item2 },
-                { label: 'Классика‍', img: quiz1_item3 },
-                { label: 'Минимализм‍', img: quiz1_item4 },
+                { label: 'Неоклассика', img: quiz1_item3 },
+                { label: 'Классика', img: "https://kuhni-smart.ru/image/catalog/article/klasskm02.jpg" },
                 { label: 'Не могу выбрать‍', img: quest },
             ],
         },
@@ -48,13 +48,8 @@ const Questions = () => {
         {
             id: 3,
             text: 'Какая длина вашей кухни?',
-            subText: "Выберите приблизительную длину‍",
-            options: [
-                { label: 'до 3-х метров' },
-                { label: '3-5 метров‍' },
-                { label: '5-7 метров‍' },
-                { label: 'Более 7 метров‍' },
-            ],
+            subText: "Введите приблизительную длину‍",
+            options: [],
         },
         {
             id: 4,
@@ -62,8 +57,8 @@ const Questions = () => {
             options: [
                 { label: 'Шпон (подороже)' },
                 { label: 'Акрил (подороже)' },
-                { label: 'МДФ в пленке (подешевле)' },
-                { label: 'Пластик (средняя стоимость)' },
+                // { label: 'МДФ в пленке (подешевле)' },
+                // { label: 'Пластик (средняя стоимость)' },
                 { label: 'ДСП (подешевле)' },
                 { label: 'Крашенный МДФ‍' },
                 { label: 'ЛМДФ (подешевле)' },
@@ -84,9 +79,8 @@ const Questions = () => {
             id: 6,
             text: 'Из какого материалы вы предпочитаете столешницу? (можно выбрать несколько)',
             options: [
-                { label: 'Камень‍' },
                 { label: 'Искусственный камень‍' },
-                { label: 'МДФ‍' },
+                { label: 'Тексталит' },
                 { label: 'Кварц‍' }
             ],
         },
@@ -107,7 +101,13 @@ const Questions = () => {
             [questions[currentQuestionIndex].id]: optionLabel,
         }));
     };
-
+    const handleInputChangeForQuestion3 = (e) => {
+        const { value } = e.target;
+        setAnswers((prevAnswers) => ({
+            ...prevAnswers,
+            [questions[currentQuestionIndex].id]: value,
+        }));
+    };
     const handleMultipleOptionSelect = (optionLabel) => {
         setAnswers((prevAnswers) => {
             const currentAnswers = prevAnswers[questions[currentQuestionIndex].id] || [];
@@ -221,7 +221,7 @@ const Questions = () => {
             setDisabled(false);
         });
     };
-
+    console.log(answers)
     return (
         <div className="questions">
             <span className="app-opacity"></span>
@@ -240,20 +240,18 @@ const Questions = () => {
                         textAlign: "center"
                     }}>
                         {questions[currentQuestionIndex].id === 3 ? (
-                            <select className={"questions_select"} onChange={(e) => handleOptionSelect(e.target.value)}
-                                    value={answers[3] || ''}>
-                                <option value="">Выберите длину</option>
-                                {questions[currentQuestionIndex].options.map((option) => (
-                                    <option key={option.label} value={option.label}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select>
+                            <input
+                                type="text"
+                                placeholder="Введите длину"
+                                value={answers[3] || ''}
+                                onChange={handleInputChangeForQuestion3}
+                                className="questions_input"
+                            />
                         ) : questions[currentQuestionIndex].id === 4 || questions[currentQuestionIndex].id === 6 ? (
                             <div className="questions_check">
                                 {questions[currentQuestionIndex].options.map((option) => (
                                     <label key={option.label}>
-                                        <input
+                                    <input
                                             type="checkbox"
                                             checked={(answers[questions[currentQuestionIndex].id] || []).includes(option.label)}
                                             onChange={() => handleMultipleOptionSelect(option.label)}
