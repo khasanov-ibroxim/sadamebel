@@ -1,28 +1,60 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/logo.png" />
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="./src/assets/logo.png"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sada Mebel - Мебель вашей мечты</title>
-    <meta name="description" content="Sada Mebel - предлагает мебель вашей мечты. Наша продукция отличается высоким качеством и современным дизайном.">
+    <meta name="description"
+          content="Sada Mebel - предлагает мебель вашей мечты. Наша продукция отличается высоким качеством и современным дизайном.">
     <meta name="keywords" content="мебель, интерьер, дизайн, высокое качество, современная мебель, Sada Mebel">
     <meta name="author" content="Sada Mebel">
     <meta name="robots" content="index, follow"> <!-- Позволяет поисковым системам индексировать страницу -->
     <meta property="og:title" content="Sada Mebel - Мебель вашей мечты"> <!-- Для Open Graph -->
-    <meta property="og:description" content="Sada Mebel - предлагает мебель вашей мечты. Наша продукция отличается высоким качеством и современным дизайном.">
+    <meta property="og:description"
+          content="Sada Mebel - предлагает мебель вашей мечты. Наша продукция отличается высоким качеством и современным дизайном.">
     <meta property="og:image" content="./src/assets/logo-01.png"> <!-- Изображение для сайта -->
     <meta property="og:url" content="https://www.sadamebel.com"> <!-- URL сайта -->
     <meta name="twitter:card" content="summary_large_image"> <!-- Для Twitter карт -->
     <meta name="twitter:title" content="Sada Mebel - Мебель вашей мечты">
-    <meta name="twitter:description" content="Sada Mebel - предлагает мебель вашей мечты. Наша продукция отличается высоким качеством и современным дизайном.">
+    <meta name="twitter:description"
+          content="Sada Mebel - предлагает мебель вашей мечты. Наша продукция отличается высоким качеством и современным дизайном.">
     <meta name="twitter:image" content="./src/assets/logo-01.png">
     <link rel="canonical" href="https://www.sadamebel.com"> <!-- Канонический URL -->
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '3562569300713241');
+        fbq('track', 'PageView');
+    </script>
+
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=3562569300713241&ev=PageView&noscript=1"
+/></noscript>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
